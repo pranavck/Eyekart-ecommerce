@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g0@q82r6#um1v2+n6y%6kl8_&h%u0^4etx9l&gf%+zp8n!e$sy'
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -158,5 +159,5 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
-RAZOR_KEY_ID = 'rzp_test_gUen6o6aZhkR37'
-RAZOR_KEY_SECRET = 'XRmQwAa92JfORfh5zXGXGd5J'
+RAZOR_KEY_ID = config("RAZOR_KEY_ID")
+RAZOR_KEY_SECRET = config("RAZOR_KEY_SECRET")
