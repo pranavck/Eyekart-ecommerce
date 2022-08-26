@@ -1,0 +1,33 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+  
+
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Is Active</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    {%for user in users %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{user.first_name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.is_active}}</td>
+      <th scope="col"><button type="submit" class="btn btn-danger"><a style="color:white" href="{% url 'delete_user' user.id %}">Delete</a></button></th>
+    </tr>
+    {% endfor %}
+  </tbody>
+  
+</table>
+ 
+ {% endblock content %}
+ 

@@ -1,0 +1,38 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+
+<div>
+<button type="button" class="btn btn-secondary"><a href="{% url 'add_product' %}" style="color:white">Add Product</a></button>
+<div>
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Image</th>
+      <th scope="col">Price</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  
+  <tbody>
+    {% for product in products %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{product.product_name}}</td>
+      <td>{{product.category}}</td>
+      <td><img src="{{product.images.url}}" width=75px></td>
+      <td>{{product.price}}</td>
+      <td>{{product.stock}}</td>
+      <th scope="col"><button type="submit" class="btn btn-danger"><a style="color:white" href="{% url 'delete_user' user.id %}">Delete</a></button></th>
+    </tr>
+    {% endfor %}
+  </tbody>
+  
+</table>
+ 
+ {% endblock content %}
+ 

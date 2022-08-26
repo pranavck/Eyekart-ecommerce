@@ -1,0 +1,67 @@
+{% extends 'adminbase.html' %}
+
+{% block content %}
+
+<section class="section-conten padding-y bg">
+
+  {% include 'includes/alerts.html' %}
+
+  <div class="container">
+      <div class="row">
+       
+      <main class="col-md-12">
+          <article class="card">
+          <header class="card-header">
+              <strong class="d-inline-block mr-3">Logged in as : </strong>
+              <span>Admin</span>
+          </header>
+          <div class="card-body">
+              <div class="row"> 
+                <div class="col-md-6">
+                   <div class="card" style="text-align:center;">
+                     <div class="card-body">
+                       <h5 class="card-title">Total Orders</h5>
+                       <h4>{{orders_count}}</h4>
+                       <a href="{% url 'my_orders' %}">View Orders</a>
+                      </div>
+                   </div>
+                 </div>  
+                 <div class="col-md-6">
+                  <div class="card" style="text-align:center;">
+                    <div class="card-body">
+                      <h5 class="card-title">Total Products</h5>
+                      <h4>{{orders_count}}</h4>
+                      <a href="{% url 'my_orders' %}">View Products</a>
+                     </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                  <div class="card" style="text-align:center;">
+                    <div class="card-body">
+                      <h5 class="card-title">Total Categories</h5>
+                      <h4>{{orders_count}}</h4>
+                      <a href="{% url 'my_orders' %}">View Categories</a>
+                     </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                  <div class="card" style="text-align:center;">
+                    <div class="card-body">
+                      <h5 class="card-title">Total Revenue </h5>
+                      <h4>{{orders_count}}</h4>
+                      <a href="{% url 'my_orders' %}">View Revenue </a>
+                     </div>
+                  </div>
+                </div>   
+              </div> <!-- row.// -->
+          </div> <!-- card-body .// -->
+          <div class="table-responsive">
+          </article> <!-- order-group.// --> 
+      </main>
+  </div> <!-- row.// -->
+  </div>
+  
+  
+  </section>
+
+{% endblock%}
