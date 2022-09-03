@@ -22,6 +22,11 @@
       <td>{{user.username}}</td>
       <td>{{user.email}}</td>
       <td>{{user.is_active}}</td>
+      {% if user.is_active %}
+      <th scope="col"><button type="submit" class="btn btn-dark"><a style="color:white" href="{% url 'block_user' user.id %}">Block</a></button></th>
+      {% else %}
+      <th scope="col"><button type="submit" class="btn btn-dark"><a style="color:white" href="{% url 'unblock_user' user.id %}">UnBlock</a></button></th>
+      {% endif %}
       <th scope="col"><button type="submit" class="btn btn-danger"><a style="color:white" href="{% url 'delete_user' user.id %}">Delete</a></button></th>
     </tr>
     {% endfor %}

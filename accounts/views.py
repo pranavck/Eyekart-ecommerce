@@ -6,7 +6,8 @@ from django.contrib import messages , auth
 from store.models import Product
 from accounts.models import Account, UserProfile
 from django.contrib.auth.decorators import login_required
-
+import razorpay
+from django.conf import settings
 from orders.models import Order, OrderProduct
 from .forms import RegistrationForm, UserProfileForm ,UserForm
 from carts.views import _cart_id
@@ -41,6 +42,11 @@ def register(request):
             user = Account.objects.create_user(first_name = first_name, last_name = last_name, email = email, username = username, password = password)
             user.phone_number = phone_number
             user.save
+
+            profile = UserProfile()
+            profile.user_id = user.id
+            profile.save()
+
 
             #user_activation
 
@@ -200,7 +206,7 @@ def resetPassword(request):
 
 @login_required(login_url='login')
 def my_orders(request):
-    orders = OrderProduct.objects.all().exclude(user = request.user, status="Cancelled").order_by('-created_at')
+    orders = OrderProduct.objects.filter(user = request.user).order_by('-created_at')
     context = {
         'orders' : orders,
     }
@@ -263,12 +269,23 @@ def order_detail(request, order_id):
     }
     return render(request, 'accounts/order_detail.html',context)
 
-def cancel_order(request,payment_id):
-    order = OrderProduct.objects.get(user=request.user,payment=payment_id)
-    item = Product.objects.get(user=request.user,pk=pk)
-    item.stock += item.quantity
-    item.save()
+def cancel_order(request,pk):
+    order = OrderProduct.objects.get(user=request.user,pk=pk)
     order.status = "Cancelled"
     order.save()
+    item = Product.objects.get(pk=order.product.id)
+    item.stock += order.quantity
+    item.save()
+    payment = order.payment
+    print(payment)
+    refund_amount = int(order.order.order_total*100)
+    print(refund_amount)
+    client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
+       
+    client.payment.refund(payment,{
+            "amount": refund_amount,
+            "speed": "optimum",
+        })
+    
     messages.success(request,"Order cancelled")
     return redirect('my_orders')

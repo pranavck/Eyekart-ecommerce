@@ -1,0 +1,50 @@
+{% extends 'adminbase.html' %}
+
+{% block content %}
+
+<section class="section-conten padding-y bg">
+
+  {% include 'includes/alerts.html' %}
+
+  <div class="container">
+      <div class="row">
+      <main class="col-md-9">
+          <article class="card">
+          <header class="card-header">
+              <strong class="d-inline-block mr-3"> Add Category</strong>
+          </header>
+          <div class="card-body">
+              <div class="row"> 
+                 <div class="col-md-12">
+                  <form action="{% url 'edit_category' category.id %}" method="POST"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label>Category Name</label>
+                        {{category_form.category_name}}
+                      </div> 
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <label>Category Slug</label>
+                        {{category_form.slug}}
+                        
+                      </div>
+                    </div>
+
+                    <button type="submit" value="save" class="btn btn-primary">Save</button>
+                  </form>
+                </div>    
+              </div> <!-- row.// -->
+          </div> <!-- card-body .// -->
+          <div class="table-responsive">
+          </article> <!-- order-group.// --> 
+      </main>
+  </div> <!-- row.// -->
+  </div>
+  
+  
+  </section>
+
+{% endblock content %}
+

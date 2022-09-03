@@ -5,7 +5,40 @@
 <section class="section-conten padding-y bg">
 
   {% include 'includes/alerts.html' %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <body>
+<div class="align-center">
+  <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
+<script>
+var xValues = ["New", "Delivered", "Cancelled"];
+var yValues = {{order_status1}};
+var barColors = [
+  "#0c22c9",
+  "#13ad0a",
+  "#f50707",
+  "#e8c3b9",
+  "#1e7145"
+];
+
+new Chart("myChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Order Status"
+    }
+  }
+});
+</script>
+</div>  
   <div class="container">
       <div class="row">
        
@@ -21,7 +54,7 @@
                    <div class="card" style="text-align:center;">
                      <div class="card-body">
                        <h5 class="card-title">Total Orders</h5>
-                       <h4>{{orders_count}}</h4>
+                       <h4>{{total_orders}}</h4>
                        <a href="{% url 'my_orders' %}">View Orders</a>
                       </div>
                    </div>
@@ -30,7 +63,7 @@
                   <div class="card" style="text-align:center;">
                     <div class="card-body">
                       <h5 class="card-title">Total Products</h5>
-                      <h4>{{orders_count}}</h4>
+                      <h4>{{total_products}}</h4>
                       <a href="{% url 'my_orders' %}">View Products</a>
                      </div>
                   </div>
@@ -39,7 +72,7 @@
                   <div class="card" style="text-align:center;">
                     <div class="card-body">
                       <h5 class="card-title">Total Categories</h5>
-                      <h4>{{orders_count}}</h4>
+                      <h4>{{total_categories}}</h4>
                       <a href="{% url 'my_orders' %}">View Categories</a>
                      </div>
                   </div>
@@ -48,7 +81,7 @@
                   <div class="card" style="text-align:center;">
                     <div class="card-body">
                       <h5 class="card-title">Total Revenue </h5>
-                      <h4>{{orders_count}}</h4>
+                      <h4>₹ {{total_revenue.order_total__sum|floatformat:2}}</h4>
                       <a href="{% url 'my_orders' %}">View Revenue </a>
                      </div>
                   </div>
@@ -60,8 +93,9 @@
       </main>
   </div> <!-- row.// -->
   </div>
-  
+ 
   
   </section>
-
+ 
+  
 {% endblock%}

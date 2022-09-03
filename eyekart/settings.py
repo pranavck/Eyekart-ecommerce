@@ -153,8 +153,8 @@ MESSAGE_TAGS = {
 #SMTP configuration
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'eyekartdjango@gmail.com'
-EMAIL_HOST_PASSWORD = 'gzfl audi afud zulb'
+EMAIL_HOST_USER = 'eyekartmanager@gmail.com'
+EMAIL_HOST_PASSWORD = 'vrvg bdrh xqqg tqgz'
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 

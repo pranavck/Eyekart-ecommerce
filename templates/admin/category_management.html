@@ -1,0 +1,33 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+
+<div>
+<button type="button" class="btn btn-success"><a href="{% url 'add_category' %}" target="_blankstyle=" style="color:white">Add Category</a></button>
+<div>
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Category Name</th> 
+      <th scope="col">Category Slug</th> 
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  
+  <tbody>
+    {% for category in categories %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{category.category_name}}</td>
+      <td>{{category.slug}}</td>
+      <th scope="col"><button type="submit" class="btn btn-secondary"><a style="color:white" href="{% url 'edit_category' category.id %}">Edit</a></button></th>
+      <th scope="col"><button type="submit" class="btn btn-danger"><a style="color:white" href="{% url 'delete_category' category.id %}">Delete</a></button></th>
+    </tr>
+    {% endfor %}
+  </tbody>
+  
+</table>
+ 
+ {% endblock content %}
+ 

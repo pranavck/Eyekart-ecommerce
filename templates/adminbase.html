@@ -80,26 +80,27 @@
 			})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
 		</script>
 		<!-- End Google Tag Manager -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body>
 		
     
 		<div class="header">
 			<div class="header-left">
-				<div class="menu-icon bi bi-list"></div>
+				<div class=""></div>
 				<div
-					class="search-toggle-icon bi bi-search"
+					class="fas fa-search"
 					data-toggle="header_search"
 				></div>
 				<div class="header-search">
 					<form>
 						<div class="form-group mb-0">
-							<i class="dw dw-search2 search-icon"></i>
-							<input
+							<i class=""></i>
+							{% comment %} <input
 								type="text"
 								class="form-control search-input"
 								placeholder="Search Here"
-							/>
+							/> {% endcomment %}
 							<div class="dropdown">
 								<a
 									class="dropdown-toggle no-arrow"
@@ -107,9 +108,9 @@
 									role="button"
 									data-toggle="dropdown"
 								>
-									<i class="ion-arrow-down-c"></i>
+									{% comment %} <i class="ion-arrow-down-c"></i> {% endcomment %}
 								</a>
-								<div class="dropdown-menu dropdown-menu-right">
+								{% comment %} <div class="dropdown-menu dropdown-menu-right">
 									<div class="form-group row">
 										<label class="col-sm-12 col-md-2 col-form-label"
 											>From</label
@@ -145,7 +146,8 @@
 										<button class="btn btn-primary">Search</button>
 									</div>
 								</div>
-							</div>
+						 {% endcomment %}
+						</div>
 						</div>
 					</form>
 				</div>
@@ -158,10 +160,11 @@
 							href="javascript:;"
 							data-toggle="right-sidebar"
 						>
-							<i class="dw dw-settings2"></i>
+							{% comment %} <i class="dw dw-settings2"></i> {% endcomment %}
 						</a>
 					</div>
 				</div>
+				{% comment %} 
 				<div class="user-notification">
 					<div class="dropdown">
 						<a
@@ -240,7 +243,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> {% endcomment %}
 				<div class="user-info-dropdown">
 					<div class="dropdown">
 						<a
@@ -254,9 +257,9 @@
 							</span>
 							<span class="user-name">Admin</span>
 						</a>
-						<div
+						 <div
 							class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-						>
+						>{% comment %}
 							<a class="dropdown-item" href="profile.html"
 								><i class="dw dw-user1"></i> Profile</a
 							>
@@ -265,9 +268,9 @@
 							>
 							<a class="dropdown-item" href="faq.html"
 								><i class="dw dw-help"></i> Help</a
-							>
+							> {% endcomment %}
 							<a class="dropdown-item" href="{% url 'admin_logout' %}"
-								><i class="dw dw-logout"></i> Log Out</a
+								> Log Out</a
 							>
 						</div>
 					</div>
@@ -289,7 +292,7 @@
 					>
 				</h3>
 				<div class="close-sidebar" data-toggle="right-sidebar-close">
-					<i class="icon-copy ion-close-round"></i>
+					{% comment %} <i class="icon-copy ion-close-round"></i> {% endcomment %}
 				</div>
 			</div>
 			<div class="right-sidebar-body customscroll">
@@ -452,16 +455,16 @@
 
 		<div class="left-side-bar">
 			<div class="brand-logo">
-				<a href="index.html">
-					<img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo" />
+				<a href="{% url 'admin_dashboard' %}">
+					 <img src="{% static 'images/logo3.png' %}" alt="" class="dark-logo" /> 
 					<img
-						src="vendors/images/deskapp-logo-white.svg"
+						src="{% static 'images/logo3.png' %}"
 						alt=""
 						class="light-logo"
 					/>
 				</a>
 				<div class="close-sidebar" data-toggle="left-sidebar-close">
-					<i class="ion-close-round"></i>
+					{% comment %} <i class="ion-close-round"></i> {% endcomment %}
 				</div>
 			</div>
 			<div class="menu-block customscroll">
@@ -479,6 +482,12 @@
 							</ul>
 						</li>
 						<li class="dropdown">
+							<a href="{% url 'admin_dashboard' %}" class="dropdown-toggle">
+								<span class="micon bi bi-textarea-resize"></span
+								><span class="mtext">Dashboard</span>
+							</a>
+						</li>
+						<li class="dropdown">
 							<a href="{% url 'user_management' %}" class="dropdown-toggle">
 								<span class="micon bi bi-textarea-resize"></span
 								><span class="mtext">User Management</span>
@@ -491,34 +500,32 @@
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle">
+							<a href="{% url 'category_management' %}" class="dropdown-toggle">
 								<span class="micon bi bi-table"></span
 								><span class="mtext">Category Management</span>
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle">
+							<a href="{% url 'variation_management' %}" class="dropdown-toggle">
 								<span class="micon bi bi-table"></span
 								><span class="mtext">Variation Management</span>
 							</a>
 						</li>
-						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle">
-								<span class="micon bi bi-archive"></span
-								><span class="mtext"> Manage Orders </span>
+							<a href="{% url 'order_management' %}" class="dropdown-toggle ml-3" >
+								<i class=""></i><span class="mtext">Manage Orders </span>
 							</a>
-							<ul class="submenu">
-								<li><a href="ui-buttons.html">somethinh</a></li>
-							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle">
-								<span class="micon bi bi-command"></span
-								><span class="mtext">Reports</span>
+							<a href="#" class="dropdown-toggle">
+								<span class=""></span>
+								<span class="mtext">Reports</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="bootstrap-icon.html">Bootstrap Icons</a></li>
-							</ul>
+								<li><a href="{% url 'product_reports' %}">Product Report</a></li>
+							</ul> 
+							<ul class="submenu">
+								<li><a href="{% url 'sales_report' %}">Sales Report</a></li>
+							</ul> 
 						</li>
 						
 					</ul>
@@ -544,7 +551,7 @@
 								</ol>
 							</nav>
 						</div>
-						<div class="col-md-6 col-sm-12 text-right">
+						{% comment %} <div class="col-md-6 col-sm-12 text-right">
 							<div class="dropdown">
 								<a
 									class="btn btn-primary dropdown-toggle"
@@ -560,7 +567,7 @@
 									<a class="dropdown-item" href="#">View Assets</a>
 								</div>
 							</div>
-						</div>
+						</div> {% endcomment %}
 					</div>
 				</div>
 				{% block content%}
@@ -602,3 +609,18 @@
 		<!-- End Google Tag Manager (noscript) -->
 	</body>
 </html>
+
+<style>
+	.sidebar-menu.icon-style-2 .dropdown-toggle:after {
+    font-size: 0; 
+}
+.bi-textarea-resize::before {
+    content: normal;
+}
+.bi-table::before {
+	content:normal;
+}
+.sidebar-menu .submenu li>a:before {
+	content:normal;
+}
+</style>

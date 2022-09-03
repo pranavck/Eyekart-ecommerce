@@ -36,7 +36,11 @@
                           <td>{{order.order.phone}}</td>
                           <td>₹ {{order.order.order_total}}</td>
                           <td>{{order.order.created_at}}</td>
-                          <td><th scope="col"><button type="submit" class="btn btn-danger"><a style="color:white" href="{% url 'cancel_order' order.payment_id %}">Cancel Order</a></button></th></td>
+                          {% if order.status == "Cancelled" %}
+                          <td><th scope="col"><button type="submit" class="btn btn-danger" disabled><a style="color:white" href="#">Order Cancelled</a></button></th></td>
+                          {% else %}
+                          <td><th scope="col"><button type="submit" class="btn btn-danger"><a style="color:white" href="{% url 'cancel_order' order.id %}">Cancel Order</a></button></th></td>
+                          {% endif %}
                         </tr>
                         {% endfor %}
                       </tbody>

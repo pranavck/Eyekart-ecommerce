@@ -2,7 +2,7 @@
 {% block content %}
 
 <div>
-<button type="button" class="btn btn-secondary"><a href="{% url 'add_product' %}" style="color:white">Add Product</a></button>
+<button type="button" class="btn btn-success"><a href="{% url 'add_product' %}" style="color:white">Add Product</a></button>
 <div>
  <table class="table table-striped">
   <thead>
@@ -27,7 +27,9 @@
       <td><img src="{{product.images.url}}" width=75px></td>
       <td>{{product.price}}</td>
       <td>{{product.stock}}</td>
-      <th scope="col"><button type="submit" class="btn btn-danger"><a style="color:white" href="{% url 'delete_user' user.id %}">Delete</a></button></th>
+      
+      <th scope="col"><button type="submit" class="btn btn-secondary"><a style="color:white" href="{% url 'edit_product' product.id %}">Edit</a></button></th>
+      <th scope="col"><button type="submit" class="btn btn-danger"><a style="color:white" href="{% url 'delete_product' product.id %}">Delete</a></button></th>
     </tr>
     {% endfor %}
   </tbody>

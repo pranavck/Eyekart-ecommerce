@@ -1,0 +1,49 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Order Number</th>
+      <th scope="col">Price</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  
+  <tbody>
+    {% for order in orders %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{order.first_name}}</td>
+      <td>{{order.order_number}}</td>
+      <td>{{order.order_total}}</td>
+      <td>{{order.status}}</td>
+      
+      {% if order.status == "New" %}
+      <th scope="col"><button type="submit" class="btn btn-secondary btn-sm"><a style="color:white" href="{% url 'placed' order.id %}">Place Order</a></button></th>
+      <th scope="col"><button type="submit" class="btn btn-secondary btn-sm"><a style="color:white" href="{% url 'cancelled' order.id %}">Cancel</a></button></th>
+      <th scope="col"><button type="submit" class="btn btn-secondary btn-sm"><a style="color:white" href="{% url 'delivered' order.id %}">Delivered</a></button></th>
+      {% elif order.status == "Order Placed" %}
+      <th scope="col"><button type="submit" class="btn btn-secondary btn-sm"><a style="color:grey" href="#">Place Order</a></button></th>
+      <th scope="col"><button type="submit" class="btn btn-secondary btn-sm"><a style="color:white" href="{% url 'cancelled' order.id %}">Cancel</a></button></th>
+      <th scope="col"><button type="submit" class="btn btn-secondary btn-sm"><a style="color:white" href="{% url 'delivered' order.id %}">Delivered</a></button></th>
+      {% elif order.status == "Order Cancelled" %}
+      <th scope="col"><button type="submit" class="btn btn-secondary btn-sm"><a style="color:grey" href="#">Place Order</a></button></th>
+      <th scope="col"><button type="submit" class="btn btn-secondary btn-sm"><a style="color:white" href="#">Order Cancelled</a></button></th>
+      <th scope="col"><button type="submit" class="btn btn-secondary btn-sm"><a style="color:grey" href="#">Delivered</a></button></th>
+      {% elif order.status == "Order Delivered" %}
+      <th scope="col"><button type="submit" class="btn btn-secondary btn-sm"><a style="color:grey" href="#">Place Order</a></button></th>
+      <th scope="col"><button type="submit" class="btn btn-secondary btn-sm"><a style="color:grey" href="#">Cancel</a></button></th>
+      <th scope="col"><button type="submit" class="btn btn-secondary btn-sm"><a style="color:white" href="#">Order Delivered</a></button></th>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+  
+</table> 
+{% endblock content %}
+ 
