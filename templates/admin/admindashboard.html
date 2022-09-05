@@ -55,7 +55,7 @@ new Chart("myChart", {
                      <div class="card-body">
                        <h5 class="card-title">Total Orders</h5>
                        <h4>{{total_orders}}</h4>
-                       <a href="{% url 'my_orders' %}">View Orders</a>
+                       
                       </div>
                    </div>
                  </div>  
@@ -64,7 +64,7 @@ new Chart("myChart", {
                     <div class="card-body">
                       <h5 class="card-title">Total Products</h5>
                       <h4>{{total_products}}</h4>
-                      <a href="{% url 'my_orders' %}">View Products</a>
+                      
                      </div>
                   </div>
                 </div>
@@ -73,7 +73,7 @@ new Chart("myChart", {
                     <div class="card-body">
                       <h5 class="card-title">Total Categories</h5>
                       <h4>{{total_categories}}</h4>
-                      <a href="{% url 'my_orders' %}">View Categories</a>
+                     
                      </div>
                   </div>
                 </div>
@@ -82,7 +82,7 @@ new Chart("myChart", {
                     <div class="card-body">
                       <h5 class="card-title">Total Revenue </h5>
                       <h4>₹ {{total_revenue.order_total__sum|floatformat:2}}</h4>
-                      <a href="{% url 'my_orders' %}">View Revenue </a>
+                      
                      </div>
                   </div>
                 </div>   
