@@ -1,6 +1,4 @@
-from distutils.command.upload import upload
-from tkinter import CASCADE
-from turtle import onclick
+
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser , BaseUserManager
 

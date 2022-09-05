@@ -10,7 +10,7 @@ from carts.models import Cart,CartItem
 from django.contrib import messages , auth
 from django.contrib.auth.decorators import login_required , user_passes_test
 from django.contrib.auth import logout
-from adminapp.forms import AddProductForm , AddCategoryForm , AddVariationForm
+from adminapp.forms import AddProductForm , AddCategoryForm , AddVariationForm ,ProductGalleryForm
 from store.models import Variation
 from django.template.loader import render_to_string
 from weasyprint import HTML
@@ -350,5 +350,15 @@ def exportsales_pdf(request):
 
     return response
 
+def addproductgallery(request):
+    form = ProductGalleryForm()
 
+    if request.method == "POST":
+        form = ProductGalleryForm(request.POST, request.FILES)
 
+        if form.is_valid():
+            form.save()
+            return redirect("productlists")
+
+    context = {"form": form}
+    return render(request, "adminapp/addproductgallery.html", context)

@@ -11,7 +11,7 @@ def home(request):
     #get the reviews
     for product in products:
         reviews = ReviewRating.objects.filter(product_id=product.id, status = True)
-
+    reviews = ReviewRating.objects.filter(product_id=product.id, status = True)
     context = {
         'products' : products,
         'reviews' : reviews,

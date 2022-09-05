@@ -1,5 +1,5 @@
 from category.models import Category
-from store.models import Product, Variation
+from store.models import Product, Variation ,ProductGallery
 from django import forms
 
 
@@ -32,4 +32,16 @@ class AddVariationForm(forms.ModelForm):
          super(AddVariationForm, self).__init__(*args, **kwargs)
          for field in self.fields:
                 self.fields[field].widget.attrs['class'] = 'form-control'
+
+class ProductGalleryForm(forms.ModelForm):
+    class Meta:
+        model = ProductGallery
+        fields = [
+            "product",
+            "image",
+        ]
+        widgets = {
+            'product':forms.Select(attrs={'class':'form-control'}),
+        }
+
 
