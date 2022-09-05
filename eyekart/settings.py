@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*", 'http://52.41.67.254/', "52.41.67.254"]
+ALLOWED_HOSTS = ["*", 'http://52.41.67.254/', "52.41.67.254", "http://eyekart.shop", "eyekart.shop"]
 
 
 # Application definition
