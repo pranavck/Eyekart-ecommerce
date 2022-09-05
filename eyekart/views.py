@@ -6,7 +6,7 @@ from store.models import Product
 
 def home(request):
     products = Product.objects.all().filter(is_available=True)
-
+    reviews = ''
 
     #get the reviews
     for product in products:
