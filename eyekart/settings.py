@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -153,8 +153,8 @@ MESSAGE_TAGS = {
 #SMTP configuration
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'eyekartmanager@gmail.com'
-EMAIL_HOST_PASSWORD = 'vrvg bdrh xqqg tqgz'
+EMAIL_HOST_USER = 'eyekart1@gmail.com'
+EMAIL_HOST_PASSWORD = 'ofzs mvbb ihkf xkuh'
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
