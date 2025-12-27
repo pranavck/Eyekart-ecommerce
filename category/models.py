@@ -1,5 +1,5 @@
 from django.urls import reverse
-from distutils.command.upload import upload
+# from distutils.command.upload import upload
 from tabnanny import verbose
 from unicodedata import category
 from django.db import models

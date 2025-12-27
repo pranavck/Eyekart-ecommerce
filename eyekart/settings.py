@@ -24,9 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*", 'http://52.41.67.254/', "52.41.67.254", "http://eyekart.shop", "eyekart.shop"]
+# ALLOWED_HOSTS = ["*", 'http://52.41.67.254/', "52.41.67.254", "http://eyekart.shop", "eyekart.shop"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -84,12 +85,23 @@ AUTH_USER_MODEL = 'accounts.Account'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'eyecart',
+#         'USER': 'postgres',
+#         'PASSWORD' : 'zxcvbnm',
+#         'HOST': 'localhost',
+
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'eyecart',
+        'NAME': 'eyekart',
         'USER': 'postgres',
-        'PASSWORD' : 'zxcvbnm',
+        'PASSWORD' : 1234,
         'HOST': 'localhost',
 
     }
@@ -130,14 +142,28 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR /'static'
+# STATICFILES_DIRS = [
+#     'eyekart/static',
+# ]
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR /'media'
+
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR /'static'
+
+# ✅ Django will LOOK HERE for static files
 STATICFILES_DIRS = [
-    'eyekart/static',
+    BASE_DIR / 'static',
 ]
 
+# ✅ Used only for production
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR /'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

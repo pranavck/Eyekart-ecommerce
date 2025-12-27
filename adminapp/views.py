@@ -13,7 +13,7 @@ from django.contrib.auth import logout
 from adminapp.forms import AddProductForm , AddCategoryForm , AddVariationForm ,ProductGalleryForm
 from store.models import Variation
 from django.template.loader import render_to_string
-from weasyprint import HTML
+# from weasyprint import HTML
 import tempfile
 from django.db.models import Sum
 
