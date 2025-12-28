@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -55,6 +56,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'eyekart.urls'
@@ -96,14 +99,26 @@ AUTH_USER_MODEL = 'accounts.Account'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'eyekart',
-        'USER': 'postgres',
-        'PASSWORD' : 1234,
-        'HOST': 'localhost',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'eyekart',
+#         'USER': 'postgres',
+#         'PASSWORD' : 1234,
+#         'HOST': 'localhost',
 
+#     }
+# }
+
+import os
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("POSTGRES_DB"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": "db",
+        "PORT": 5432,
     }
 }
 
@@ -160,6 +175,7 @@ STATICFILES_DIRS = [
 
 # ✅ Used only for production
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
 MEDIA_URL = '/media/'
